@@ -2,13 +2,28 @@ package com.example.fafire_pos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.fafire_pos.databinding.ActivityChatTela1Binding;
 
 public class ChatTela1Activity extends AppCompatActivity {
+
+    ActivityChatTela1Binding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat_tela1);
+        binding = ActivityChatTela1Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.btEnviar.setOnClickListener(view -> {
+            Intent mensageiro = new Intent(getApplicationContext(), TelaChatRespostaActivity.class);
+            mensageiro.putExtra("key", binding.edMensagem.getText().toString());
+            startActivity(mensageiro);
+        });
     }
 }
