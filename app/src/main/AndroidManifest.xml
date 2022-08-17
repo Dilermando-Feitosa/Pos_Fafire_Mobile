@@ -14,9 +14,11 @@
         android:theme="@style/Theme.FafirePOS"
         tools:targetApi="31">
         <activity
+            android:label="Resposta"
             android:name=".TelaChatResposta"
             android:exported="false" />
         <activity
+            android:label="Mensagem"
             android:name=".ChatTela1Activity"
             android:exported="true">
             <intent-filter>

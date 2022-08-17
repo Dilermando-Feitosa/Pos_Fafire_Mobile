@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.fafire_pos.databinding.ActivityChatTela1Binding;
 
-public class ChatTela1Activity extends AppCompatActivity {
+public class ChatTela1Activity<binding> extends AppCompatActivity {
 
     ActivityChatTela1Binding binding;
 
@@ -20,9 +20,9 @@ public class ChatTela1Activity extends AppCompatActivity {
         binding = ActivityChatTela1Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btEnviar.setOnClickListener(view -> {
-            Intent mensageiro = new Intent(getApplicationContext(), TelaChatRespostaActivity.class);
-            mensageiro.putExtra("key", binding.edMensagem.getText().toString());
+        binding.btSend.setOnClickListener(view -> {
+            Intent mensageiro = new Intent(getApplicationContext(), TelaChatResposta.class);
+            mensageiro.putExtra("key", binding.edMessage.getText().toString());
             startActivity(mensageiro);
         });
     }
