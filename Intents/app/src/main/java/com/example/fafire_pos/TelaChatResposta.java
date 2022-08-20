@@ -1,16 +1,12 @@
 package com.example.fafire_pos;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.fafire_pos.databinding.ActivityChatTela1Binding;
 
-public class ChatTela1Activity<binding> extends AppCompatActivity {
+public class TelaChatResposta extends AppCompatActivity {
 
     ActivityChatTela1Binding binding;
 
@@ -20,10 +16,16 @@ public class ChatTela1Activity<binding> extends AppCompatActivity {
         binding = ActivityChatTela1Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        String valor = getIntent().getStringExtra("key");
+        binding.tvResponse.setText(valor);
+
+        Intent respostaIntent = new Intent(this, ChatTela1Activity.class);
         binding.btSend.setOnClickListener(view -> {
-            Intent mensageiro = new Intent(getApplicationContext(), TelaChatResposta.class);
-            mensageiro.putExtra("key", binding.edMessage.getText().toString());
-            startActivity(mensageiro);
+            String resposta = binding.edMessage.getText().toString();
+            binding.tvResponse.setText(resposta);
+            respostaIntent.putExtra("ResponseKey", resposta);
+            setResult(RESULT_OK, respostaIntent);
+            finish();
         });
     }
 }
