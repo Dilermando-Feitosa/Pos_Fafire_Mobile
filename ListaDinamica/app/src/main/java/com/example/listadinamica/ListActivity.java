@@ -5,16 +5,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.listadinamica.databinding.ActivityListaBinding;
+
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
 
     private CustomAdapter adapter;
 
+    ActivityListaBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista);
+
+        binding = ActivityListaBinding.inflate(getLayoutInflater());
+
+    /*    setContentView(R.layout.activity_lista);   */
+          setContentView(binding.getRoot());
 
         ArrayList<String> androidVersion = new ArrayList();
         androidVersion.add("Android 4 Ice Cream Sandwich");
@@ -30,7 +38,10 @@ public class ListActivity extends AppCompatActivity {
         String[] colors = getResources().getStringArray(R.array.colors);
 
         adapter = new CustomAdapter(androidVersion, colors);
-        RecyclerView recyclerView = findViewById(R.id.rvLista);
+
+     /*   RecyclerView recyclerView = findViewById(R.id.rvLista);  */
+        RecyclerView recyclerView = binding.rvLista;
+
         recyclerView.setAdapter(adapter);
     }
 }

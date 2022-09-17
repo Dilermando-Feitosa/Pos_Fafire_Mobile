@@ -24,10 +24,12 @@ public class ChatTela1Activity<binding> extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    String mensagem = result.getData().getStringExtra("ResposeKey");
+                    if(result.getData().hasExtra("ResponseKey")){
+
+                    String mensagem = result.getData().getStringExtra("ResponseKey");
                     if (mensagem != null && !mensagem.equals("")) {
                         binding.tvResponse.setText(mensagem);
-                    }
+                    }}
                 }
             }
     );
